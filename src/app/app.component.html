@@ -10,47 +10,52 @@
     <h1>Employees</h1>
   </div>
   <div class="card-body">
-    <mat-table class="mat-elevation-z8 table-striped" [dataSource]="dataSource">
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
       <ng-container  matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>ID</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.id}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="nik">
-        <mat-header-cell *matHeaderCellDef>NIK</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>NIK</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.nik}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Name</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.name}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="divisionsId">
-        <mat-header-cell *matHeaderCellDef>Division</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Division</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.divisionsId}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="positionsId">
-        <mat-header-cell *matHeaderCellDef>Position</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Position</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.positionsId}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="type">
-        <mat-header-cell *matHeaderCellDef>Type</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Type</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.type}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="lastPosition">
-        <mat-header-cell *matHeaderCellDef>Last Position</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Last Position</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.lastPosition}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="createDate">
-        <mat-header-cell *matHeaderCellDef>Create Date</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Create Date</mat-header-cell>
         <mat-cell *matCellDef="let employee">{{employee.createDate}}</mat-cell>
       </ng-container>
       <ng-container  matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-header-cell mat-sort-header *matHeaderCellDef>Action</mat-header-cell>
         <mat-cell *matCellDef="let employee">
-          <button class="btn btn-info">Edit</button> &nbsp; <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-info" (click)="editEmployee(employee)">Edit</button>&nbsp;
+          <button class="btn btn-danger" (click)="deleteEmployee(employee.id)" confirm="Are you sure, {{employee.name}}?">Delete</button>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
     </mat-table>
+  </div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+  <div>
+    
   </div>
 </div>

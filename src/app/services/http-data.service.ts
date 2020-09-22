@@ -12,7 +12,7 @@ export class HttpDataService {
 
 
   // API path
-  base_path = 'http://25.21.19.4:8080/employees/';
+  base_path = 'http://25.21.19.4:8080/employees/'; //API dari kang rino
 
   constructor(private http: HttpClient) { }
 
@@ -41,15 +41,15 @@ export class HttpDataService {
   };
 
 
-  // // Create a new item
-  // createItem(item): Observable<Employee> {
-  //   return this.http
-  //     .post<Employee>(this.base_path, JSON.stringify(item), this.httpOptions)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
-  // }
+  // Create a new item
+  createItem(item): Observable<Employee> {
+    return this.http
+      .post<Employee>(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
 
   // // Get single Employee data by ID
   // getItem(id): Observable<Employee> {
@@ -71,23 +71,23 @@ export class HttpDataService {
       )
   }
 
-  // // Update item by id
-  // updateItem(id, item): Observable<Employee> {
-  //   return this.http
-  //     .put<Employee>(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
-  // }
+  // Update item by id
+  updateItem(id, item): Observable<Employee> {
+    return this.http
+      .put<Employee>(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
 
-  // // Delete item by id
-  // deleteItem(id) {
-  //   return this.http
-  //     .delete<Employee>(this.base_path + '/' + id, this.httpOptions)
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     )
-  // }
+  // Delete item by id
+  deleteItem(id) {
+    return this.http
+      .delete<Employee>(this.base_path + '/' + id, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
 }
